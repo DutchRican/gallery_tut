@@ -1,8 +1,12 @@
+import "@uploadthing/react/styles.css";
 import "~/styles/globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { GeistSans } from "geist/font/sans";
-import { TopNav } from "./_components/topnav";
+import { extractRouterConfig } from "uploadthing/server";
+import { TopNav } from "~/app/_components/topnav";
+import { ourFileRouter } from "~/app/api/uploadthing/core";
 
 export const metadata = {
   title: "Tiny galery tutorial",
@@ -19,6 +23,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
         <body className="flex flex-col gap-4">
+          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
           <TopNav />
           {children}</body>
       </html>
