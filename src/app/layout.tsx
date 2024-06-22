@@ -4,6 +4,7 @@ import "~/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { GeistSans } from "geist/font/sans";
+import { Toaster } from "sonner";
 import { extractRouterConfig } from "uploadthing/server";
 import { TopNav } from "~/app/_components/topnav";
 import { ourFileRouter } from "~/app/api/uploadthing/core";
@@ -32,6 +33,7 @@ export default function RootLayout({
           </div>
           {modal}
           <div id="modal-root" /></body>
+        <Toaster />
       </html>
     </ClerkProvider>
   );
