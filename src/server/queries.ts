@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
-import { redirect } from "next/navigation";
+import { RedirectType, redirect } from "next/navigation";
 import "server-only";
 import { db } from "./db";
 import { images } from "./db/schema";
@@ -40,5 +40,5 @@ export async function deleteImage(id: number) {
 		.delete(images)
 		.where(and(eq(images.id, id), eq(images.userId, user.userId)));
 
-	redirect('/');
+	redirect('/', RedirectType.replace);
 }
