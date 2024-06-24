@@ -27,7 +27,7 @@ export default async function FullPageImageView(props: { photoId: string }) {
 				<div className="p-2">
 					<form action={async () => {
 						"use server";
-						await deleteImage(idAsNumber);
+						await deleteImage(image.id);
 					}} >
 						<Button type="submit" variant="destructive">Delete</Button>
 					</form>
